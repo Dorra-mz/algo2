@@ -1,0 +1,84 @@
+LGORITHM differents
+VAR
+    tab1 : ARRAY_OF INTEGER[n];
+    tab2 : ARRAY_OF INTEGER[m];
+    i,j,som : INTEGER
+
+
+BEGIN
+
+     som := 0;
+     FOR i FROM 0 TO n-1   DO
+      
+      FOR j FROM 0 TO m-1   DO
+      
+          IF (tab1[i]<> tab2 [j]) THEN
+            som = som + tab1[i] + tab2[j];
+          END_IF
+           
+           END_FOR
+
+         END_FOR
+END
+
+
+PROCEDURE dot_product (v1: ARRAY_OF FLOAT, v2 : ARRAY_OF FLOAT, VAR ps: FLOAT)
+VAR
+  len1, len2 ,i : INTEGER ;
+
+BEGIN
+   
+   len1:= v1.length ;
+   len2:= v2.length;
+   
+
+   IF (len1 <> len2) THEN
+    
+    write ( "Les deux vecteures doivent avoir la même dimension")
+
+   END_IF
+
+
+   ps := 0 ;
+
+   FOR i FROM 0 TO len1-1   DO
+    
+    ps = ps + ( v1[i] * v2[i] );
+   
+   END_FOR
+   
+   write(ps);
+END
+
+PROCEDURE si_orthogonaux (v1: ARRAY_OF FLOAT, v2 : ARRAY_OF FLOAT, VAR ps: FLOAT)
+ VAR
+  
+  ort : BOOLEAN := false ;
+
+BEGIN
+
+   IF (dot_product (v1: ARRAY_OF FLOAT, v2 : ARRAY_OF FLOAT, VAR ps: FLOAT)=0) THEN
+    
+    ort = TRUE;
+   ELSE
+    ort = FALSE ;
+   END_IF
+
+
+ALGORITHM Orthogo
+VAR
+    
+BEGIN
+    
+    dot_product (v1: ARRAY_OF FLOAT, v2 : ARRAY_OF FLOAT, VAR ps: FLOAT);
+
+    IF (si_orthogonaux (v1: ARRAY_OF FLOAT, v2 : ARRAY_OF FLOAT, VAR ps: FLOAT)) THEN
+      
+      Write("les deux vecteurs sont orthogonaux");
+
+    ELSE
+      
+      Write("les deux vecteurs ne sont pas orthogonaux");
+
+    END_IF
+END
